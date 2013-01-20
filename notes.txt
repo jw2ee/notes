@@ -51,18 +51,21 @@ Using Git::
 >>git commit -m "tracking message"
 >>git remote add origin git@github.com:jweill/try_git.git
 >>git push -u origin master
---development add, merge branch, and push on‌line--
+--update changes and push to github.com--
 >>git add .
+>>git status
 >>git commit -m "notes for update"
+>>git push -u origin master
 --merging changes from a contributor
 >>git checkout master
 >>git checkout -b temp_branch
 >>git merge contributor_branch
->>git status
 >>git diff master
 >>git checkout master
 >>git merge temp_branch
 >>git branch -D temp_branch
+--cloning from github to local directory
+>git clone https://github.com/jweill/demo_app.git
 ------------------------------------
 >>git push
 >>git push heroku
