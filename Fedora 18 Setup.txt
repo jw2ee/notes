@@ -93,3 +93,9 @@ Installing Java SDK::
 
 --add this to Eclipse Android--
 sudo yum install ncurses-libs.i686 libstdc++.i686 libgcc.i686
+
+--loading different desktops--
+>sudo yum group list  ##list available softwaregroups
+>sudo yum groupinstall "Cinnamon Desktop"
+>sudo yum groupinstall "LXDE Desktop"
+

@@ -1,6 +1,6 @@
 hot keys::
 super-r : open run dialog
-super-w : open file manager
+super-e : open file manager
 Alt-Tab : select next window
 Alt-Space : show menu
 Alt-Esc : move window behind
@@ -84,7 +84,7 @@ bash custom settings::
 >>simple ##set prompt to ">> ", function added to file .bashrc {PS1 = ">>"}
 
 >>ln -s /usr/local/eclipse/eclipse ##creates a link on the desktop
->>ls -R | grep filename  ##search recursively for a filename
+>>ls -R | grep filename  ##search recursively for "filename"
 
 /etc/xdg/lxsession/LXDE/autostart
 
