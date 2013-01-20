@@ -1,0 +1,47 @@
+--modifying SSH configuration--first backup original
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
+sudo chmod a-w /etc/ssh/sshd_config.factory-defaults
+--make changes--then restart SSH
+sudo vi /etc/ssh/sshd_config
+--change "PasswordAuthentication" to "no" for use of public key
+--change "AllowUser sandy" to let only sandy use SSH
+sudo restart ssh
+
+--delete stored keys on local in file--
+>>sudo vi .ssh/known_hosts
+
+--check is SSH is running--
+ps -A | grep sshd
+
+--find server SSH ip address--
+>ifconfig
+--look for address labeled inet
+
+--setup port fowarding in Virtualbox Network--
+--using NAT--click Port Forwarding--add new rule
+--setting for sandbox1 = host port 3001, counting up for there
+name: "ssh", protocal: "TCP", host port: "3022", guest port: "22" --leave ip's blank
+--have "openssh-server" installed
+
+--back on main computer in a terminal-- login with command
+>>ssh -p 3001 sandy@127.0.0.1  --for connecting to sandbox1
+>>ssh -p 3001 sandy@localhost  --since network is lo this works
+
+--to copy a file from local machine to server machine--secure copy
+scp file.txt sandy@127.0.0.1:/home/sandy/www
+
+--to copy from server to local machine--
+scp sandy@127.0.0.1:file.txt /home/sandy/www
+
+--to copy a directory--
+scp -r /local/directory sandy@127.0.0.1:/home/sandy/www ##copy to server
+scp -r sandy@127.0.0.1:/home/sandy/www /local/directory ##copy to local
+
+--could use >>ssh sandbox1 --if I create the file .ssh/config
+>>vi .ssh/config ##and enter
+Host sandbox1
+  Hostname 127.0.0.1
+  User sandy
+  Port 3001
+
+>>ssh sandbox1

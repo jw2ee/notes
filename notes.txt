@@ -1,0 +1,86 @@
+irb::
+<ctrl> l  ##clears the screen
+
+hot keys::
+super-r : open run dialog
+super-w : open file manager
+Alt-Tab : select next window
+Alt-Space : show menu
+Alt-Esc : move window behind
+Ctrl-Esc : open start button
+Ctrl-Alt-Del : open task manager
+Ctrl-Alt-Right : open desktop right
+Shift-Alt-Right : send to right desktop
+F11 : toggle fullscreen
+shift-fn-prt_sc : --paste selected text to cursor position
+ctrl-fn-prt_sc : --copy
+shift-ctrl-c : --copy selected text in xterm
+shift-ctrl-p : --paste selected text in xterm
+alt-tab: --select between open apps
+ctrl-tab: --switches between open doc tabs in gedit
+ctrl-w: --closes current open doc in gedit
+ctrl-s: --saves current open doc in gedit
+
+ruby on rails commands::
+>>rake doc:rails ##copies rails api documents to /doc/api/index.html
+>>rake doc:app ##copies ruby app documents to /doc/app/index.html
+>>gem outdated  ##lists gems in need of update
+>>gem update ##update the gems
+>>gem update --system ##updates all gems, ruby, and rails
+>>rails new -h ##lists a builder switches
+>>gem list --local
+>>bundle -v
+>>rails -v
+>>gem install rails -v 3.2.8 ##to install prior version
+>>gem uninstall rails -v 3.2.8
+>>bundle ##updates gems for a project, use for running in new environment (must be in project folder)
+>>bundle install --without production ##excludes production gems for all future updates
+>>rails destroy controller FooBars  ##removes files created by "generate"
+>>bundle exec rake db:rollback ##to undo a db:migrate
+>>bundle exec annotate  ##adds attributes to databases app/models/*.rb
+>>rails console --sandbox
+>>bundle exec rake db:reset
+>>bundle exec rake db:test:prepare  ##creates test db for development
+
+Using Git::
+--creating a new repo--
+--change to directory to store into git
+>>git config --list
+>>git init
+>>git add .
+>>git commit -m "tracking message"
+>>git remote add origin git@github.com:jweill/try_git.git
+>>git push -u origin master
+--development add, merge branch, and push on‌line--
+>>git add .
+>>git commit -m "notes for update"
+--merging changes from a contributor
+>>git checkout master
+>>git checkout -b temp_branch
+>>git merge contributor_branch
+>>git status
+>>git diff master
+>>git checkout master
+>>git merge temp_branch
+>>git branch -D temp_branch
+------------------------------------
+>>git push
+>>git push heroku
+>>heroku open   ##open heroku in browser
+>>heroku logs   ##debug with logs
+>>gitk  ##graphic view of branches
+>>git clone http://github.com/LasVegasRubyGroup/user_group_app.git 
+>>git clone http://github.com/mhartl/sample_app.git
+
+Using Heroku::
+>>heroku login
+--change to rails app directory--
+>>heroku create --stack cedar  ##note the address shown
+>>git push heroku master
+>>heroku run rake db:migrate
+
+bash custom settings::
+>>simple ##set prompt to ">> ", function added to file .bashrc {PS1 = ">>"}
+
+>>ln -s /usr/local/eclipse/eclipse ##creates a link on the desktop
+

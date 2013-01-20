@@ -1,0 +1,46 @@
+>>cat /etc/issue #lists unbuntu version installed
+>>chmod +x #changes a text file to be an executable
+
+Touchpad enable/disable::
+>>xinput list
+>>xinput set-prop 12 "Device Enabled" 1
+>>xinput set-prop 12 "Device Enabled" 0
+
+Ubuntu System Backup using a tar file::
+>>sudo su
+>>cd /
+>>tar -cvpzf backup.tar.gz / --exclude=/backup.* --exclude=/proc --exclude=/lost+found --exclude=/mnt --exclude=/sys --exclude=/dev --exclude=/media --exclude=/host --exclude=/run --exclude=/tmp --exclude=/*.old --exclude='./home/*/.gvfs' 
+
+tar -cvpz <put options here> / | split -d -b 3900m - /name/of/backup.tar.gz. 
+
+/lib/libnss_mdns6.so.2
+tar: Exiting with failure status due to previous errors
+
+tar -cvpzf /media/SANDISK8/backup.tar.gz /home/jac
+
+--to restore---------------------
+>>tar -xvpfz backup.tar.gz -C /
+>>mkdir /proc /lost+found /sys /mnt /media
+
+Backing Up Ubuntu Apps to a List::
+sudo dpkg --list
+sudo dpkg --get-selections > app-backup-list.txt
+--To Restore---
+sudo dpkg --get-selections < app-backup-list.txt
+sudo apt-get -y update
+sudo apt-get dselect-upgrade
+
+Listing Disk Usage::
+>>df -Th
+
+Changing User Directory:
+sudo usermod -l new-name old-name
+
+Set Ownership for new copied user:
+sudo clown -R user:user /home/user
+
+Change Hostname:
+sudo gedit /etc/hostname
+sudo gedit /etc/hosts
+sudo gedit /etc/samba/smb.conf
+

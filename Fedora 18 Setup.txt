@@ -1,0 +1,95 @@
+Fedora LXDE 18 Install on HP Laptop::
+
+--modify grub2--to support laptop display--
+>sudo vi /etc/default/grub
+--add text-- "acpi_osi=Linux acpi_backlight=vendor" --replacing text-- "acpi=Linux"
+>sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+--installing Virtualbox--
+>yum update
+>sudo yum install wget gcc dkms kernel-devel kernel-headers
+>uname -r
+--reboot system--
+>rpm -qa | grep kernel
+>sudo -i ##login as root
+>cd /etc/yum.repos.d/
+>wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+>yum install VirtualBox-4.2
+>service vboxdrv setup
+--add users to vboxusers group--replace "user_name" with name(s)
+>usermod -a -G vboxusers user_name
+>virtualbox &
+
+--nodejs install--
+https://github.com/creationix/nvm
+>curl https://raw.github.com/creationix/nvm/master/install.sh | sh
+>nvm install 0.8.17
+>nvm alias default 0.8.17
+
+--installing Ruby on Rails--
+https://rvm.io/rvm/install/  <-- this is likely the instructions to follow in the future
+>sudo yum install git-core curl make bzip2 gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel libxslt-devel sqlite sqlite-devel openssl openssl-devel 
+>bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer) 
+>echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function' >> ~/.bashrc 
+--reload .bashrc
+>. .bashrc
+>rvm install 1.9.3
+>rvm use 1.9.3 --default
+>gem install rails
+>gem install sqlite3
+>gem install execjs
+>gem update
+>gem update --system
+>gem list
+--must add this to Gemfile--------------
+gem 'execjs'
+gem 'therubyracer', :platforms => :ruby
+----------------------------------------
+
+--Installing Git--
+>sudo yum install git
+>cd ~
+>mkdir .ssh
+>cd .ssh
+>ssh-keygen -t rsa -C "jack.weill@gmail.com"
+>cd ..
+>chmod 700 ~/.ssh
+>chmod 600 ~/.ssh/id_rsa
+>chmod 644 ~/.ssh/id_rsa.pub‌
+>sudo yum install xclip
+>xclip -sel clip < ~/.ssh/id_rsa.pub
+
+--installing gedit/gmate--
+>sudo yum install gedit
+>sudo yum install gedit-plugins
+>sudo yum install nodejs php5-cli
+--https://github.com/gmate/gmate
+--follow instructions for "Other Linux"
+
+--Installing NetBeans--
+--download--
+netbeans.org/download
+chmod +x netbeans-7.2-ml-linux.h
+./netbeans-7.2-ml-linux.sh
+
+Installing Java SDK::
+--download java SDK--
+--http://www.oracle.com/technetwork/java/
+>rpm -Uvh /path/to/binary/jdk-7u11-linux-x64.rpm
+>alternatives --install /usr/bin/java java /usr/java/latest/jre/bin/java 20000
+>alternatives --install /usr/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 /usr/java/latest/jre/lib/amd64/libnpjp2.so 20000
+>alternatives --install /usr/bin/javac javac /usr/java/latest/bin/javac 20000
+>alternatives --install /usr/bin/jar jar /usr/java/latest/bin/jar 20000
+--select java/latest
+>alternatives --config java
+>alternatives --config libjavaplugin.so.x86_64
+>alternatives --config javac
+--verify that it was changed
+>java -version
+>javac -version
+--in browser enter "about:plugins" in address bar
+## export JAVA_HOME JDK/JRE ##
+>export JAVA_HOME="/usr/java/latest"
+
+--add this to Eclipse Android--
+sudo yum install ncurses-libs.i686 libstdc++.i686 libgcc.i686
