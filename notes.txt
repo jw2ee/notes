@@ -1,6 +1,3 @@
-irb::
-<ctrl> l  ##clears the screen
-
 hot keys::
 super-r : open run dialog
 super-w : open file manager
@@ -9,7 +6,7 @@ Alt-Space : show menu
 Alt-Esc : move window behind
 Ctrl-Esc : open start button
 Ctrl-Alt-Del : open task manager
-Ctrl-Alt-Right : open desktop right
+Ctrl-Alt-Right or super-F2 : open desktop right
 Shift-Alt-Right : send to right desktop
 F11 : toggle fullscreen
 shift-fn-prt_sc : --paste selected text to cursor position
@@ -41,6 +38,8 @@ ruby on rails commands::
 >>rails console --sandbox
 >>bundle exec rake db:reset
 >>bundle exec rake db:test:prepare  ##creates test db for development
+--irb::
+<ctrl> l  ##clears the screen
 
 Using Git::
 --creating a new repo--
@@ -57,6 +56,7 @@ Using Git::
 >>git commit -m "notes for update"
 >>git push -u origin master
 --merging changes from a contributor
+>>git reset filename~  ##remove file from add index
 >>git checkout master
 >>git checkout -b temp_branch
 >>git merge contributor_branch
@@ -72,8 +72,6 @@ Using Git::
 >>heroku open   ##open heroku in browser
 >>heroku logs   ##debug with logs
 >>gitk  ##graphic view of branches
->>git clone http://github.com/LasVegasRubyGroup/user_group_app.git 
->>git clone http://github.com/mhartl/sample_app.git
 
 Using Heroku::
 >>heroku login
@@ -86,4 +84,7 @@ bash custom settings::
 >>simple ##set prompt to ">> ", function added to file .bashrc {PS1 = ">>"}
 
 >>ln -s /usr/local/eclipse/eclipse ##creates a link on the desktop
+>>ls -R | grep filename  ##search recursively for a filename
+
+/etc/xdg/lxsession/LXDE/autostart
 
