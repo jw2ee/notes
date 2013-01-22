@@ -99,3 +99,24 @@ sudo yum install ncurses-libs.i686 libstdc++.i686 libgcc.i686
 >sudo yum groupinstall "Cinnamon Desktop"
 >sudo yum groupinstall "LXDE Desktop"
 
+--installing MongoDB on Fedora--
+--there is a conflicting filename for fedora, so cannot use yum--
+>cd ~/Development
+>curl http://downloads.mongodb.org/linux/mongodb-linux-x86_64-2.2.2.tgz > mongo.tgz
+>tar -zxvf mongo.tgz
+>sudo mkdir -p /data/db
+>sudo chown jax /data/db  ##or replace "jax" with user
+--start MongoD
+>~/Development/mongodb-linux-x86_64-2.2.2/bin/mongod
+--open new xterm window and start Mongo
+>~/Development/mongodb-linux-x86_64-2.2.2/bin/mongo
+
+--installing Python Bottle--http://bottlepy.org/docs/dev/
+>sudo yum install python-setuptools python-setuptools-devel
+>sudo easy_install bottle
+
+--installing Pymongo--http://api.mongodb.org/python/current/
+>sudo yum install python-setuptools python-setuptools-devel
+>sudo easy_install pip
+>sudo pip install pymongo
+
