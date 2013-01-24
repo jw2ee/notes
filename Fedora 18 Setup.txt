@@ -100,7 +100,7 @@ sudo yum install ncurses-libs.i686 libstdc++.i686 libgcc.i686
 >sudo yum groupinstall "LXDE Desktop"
 
 --installing MongoDB on Fedora--
---there is a conflicting filename for fedora, so cannot use yum--
+--there is a conflicting filename for fedora, so should not use yum--
 >cd ~/Development
 >curl http://downloads.mongodb.org/linux/mongodb-linux-x86_64-2.2.2.tgz > mongo.tgz
 >tar -zxvf mongo.tgz
@@ -120,3 +120,16 @@ sudo yum install ncurses-libs.i686 libstdc++.i686 libgcc.i686
 >sudo easy_install pip
 >sudo pip install pymongo
 
+--installing Inkscape--
+--edit /etc/yum.conf, and add the following entry:
+[Extras]
+name=Fedora Extras
+baseurl=http://download.fedora.redhat.com/pub/fedora/linux/extras/$releasever/$basearch/
+-----
+>sudo yum install inkscape
+
+--installing video codecs--
+--must resolve missing keys from--http://rpmfusion.org/keys
+>sudo yum install vlc
+
+s
