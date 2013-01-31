@@ -138,4 +138,28 @@ baseurl=http://download.fedora.redhat.com/pub/fedora/linux/extras/$releasever/$b
 --must resolve missing keys from--http://rpmfusion.org/keys
 >sudo yum install vlc
 
+--Power Management tuning--
+>sudo yum install powertop
+--run on battery (takes a while and screen dims and blacks)
+>sudo powertop --calibrate
+
+--view cpu details, and processes--
+>cat /proc/cpuinfo
+>lsmod
+--general cpu scaling setup--
+>sudo modprobe acpi-cpufreq
+--view which governor is being used--
+>cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+--view which governors are availble--
+>cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
+--setting to powersave--
+>sudo modprobe cpufreq_powersave
+>sudo sh -c "echo powersave > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
+sudo sh -c "echo powersave > /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor"
+sudo sh -c "echo powersave > /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor"
+sudo sh -c "echo powersave > /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor"
+--changing back to default settings--
+>sudo modprobe cpufreq_ondemand
+>sudo sh -c "echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
+
 
