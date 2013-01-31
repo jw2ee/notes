@@ -1,0 +1,42 @@
+--start MongoD
+>~/Development/mongodb-linux-x86_64-2.2.2/bin/mongod
+--open new xterm window and start Mongo Shell
+>~/Development/mongodb-linux-x86_64-2.2.2/bin/mongo
+
+--Standards used in MongoDB--
+BSONspec.org
+
+--BSON data types--
+>NumberInt(42)  --constructor for 32-bit integer
+>NumberLong(42)  --constructor for 64-bit integer
+>new Date()  --output >ISODate("2013-01-28T20:11:18.682Z")
+
+--Data Entry--
+>z = {a : 1} --a dictionary
+>z.a --returns value "1"
+>z["a"] --returns value "1" for string "a"
+>w = "a"
+>z[w] --returns value for string in variable
+>obj = { "b" : NumberLong(49), "c" : ISODate("2013-01-28T20:11:18.682Z") }
+
+--Mongo Shell Commands--a JavaScript Interpreter
+>help
+>help keys
+>db  --returns current database/collection name
+>db.people.insert( obj )  --method on collection inside database
+>db.people.find()  --query and return all document in collection 
+>db.people.findOne()  --returns one document at random from collection
+>db.people.findOne({ "name" : "Jones" })
+>db.people.findOne({ "name" : "Jones" }, {"email" :true, "_id" : false })
+>for (i=0;i<1000;i++) {names=["exam","essay","quiz"]; for (j=0;j<3;j++) {db.scores.insert({"student" : i, "type" : names[j], score : Math.round(Math.random()*100)});}}
+>db.scores.find({ student: 19, type: "essay" }, { score: true })
+>db.scores.find({ type: "essay", score: 50 }, { student: true, _id: false })
+>
+
+--database query operators--
+>db.scores.find({ score: { $gt : 95, $lt : 98 } })  -- 95 > score < 98 
+>db.scores.find({ score: { $lte : 55 } })  --scores less than or equal to 55
+>
+
+
+

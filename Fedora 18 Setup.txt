@@ -5,6 +5,12 @@ Fedora LXDE 18 Install on HP Laptop::
 --add text-- "acpi_osi=Linux acpi_backlight=vendor" --replacing text-- "acpi=Linux"
 >sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
+--Color Management--
+>sudo yum install gnome-color-manager
+
+--Install Gimp with plugings--
+>sudo yum install gimp gimp-devel
+
 --installing Virtualbox--
 >yum update
 >sudo yum install wget gcc dkms kernel-devel kernel-headers
@@ -108,7 +114,7 @@ sudo yum install ncurses-libs.i686 libstdc++.i686 libgcc.i686
 >sudo chown jax /data/db  ##or replace "jax" with user
 --start MongoD
 >~/Development/mongodb-linux-x86_64-2.2.2/bin/mongod
---open new xterm window and start Mongo
+--open new xterm window and start Mongo Shell
 >~/Development/mongodb-linux-x86_64-2.2.2/bin/mongo
 
 --installing Python Bottle--http://bottlepy.org/docs/dev/
@@ -125,11 +131,11 @@ sudo yum install ncurses-libs.i686 libstdc++.i686 libgcc.i686
 [Extras]
 name=Fedora Extras
 baseurl=http://download.fedora.redhat.com/pub/fedora/linux/extras/$releasever/$basearch/
------
+--------------------------------------------------
 >sudo yum install inkscape
 
 --installing video codecs--
 --must resolve missing keys from--http://rpmfusion.org/keys
 >sudo yum install vlc
 
-s
+

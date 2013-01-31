@@ -1,0 +1,15 @@
+--using Avidemux--
+--for 1280x720 GoPro (setting 720p Wide 16:9)
+Video Output: Mpeg4 (x264)
+	Configure::
+		Rate Control: Avg Bitrate (two pass): Target 1800  --5.6:1 comp
+		Output 1: Aspect Ratio: 1:1
+	Filter::
+		crop: Left:160 Right:160  --this makes a 4:3 960x720 video
+		resize: resize values must be multiplies of 8
+		Asharp: normal
+
+Audio Output: Copy
+
+Output Muxer: Mkv Muxer
+
