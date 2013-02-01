@@ -22,8 +22,9 @@ ruby on rails commands::
 >>rake doc:rails ##copies rails api documents to /doc/api/index.html
 >>rake doc:app ##copies ruby app documents to /doc/app/index.html
 >>gem outdated  ##lists gems in need of update
+>>gem update --system ##updates ruby system
 >>gem update ##update the gems
->>gem update --system ##updates all gems, ruby, and rails
+>>sudo gem clean  ##removes outdated gems
 >>rails new -h ##lists a builder switches
 >>gem list --local
 >>bundle -v

@@ -8,6 +8,9 @@ Fedora LXDE 18 Install on HP Laptop::
 --Color Management--
 >sudo yum install gnome-color-manager
 
+--Digital Clock Setup--
+%a %b %d %l:%M %p ##means Thu Jan 31 6:02 PM
+
 --Install Gimp with plugings--
 >sudo yum install gimp gimp-devel
 
@@ -155,11 +158,26 @@ baseurl=http://download.fedora.redhat.com/pub/fedora/linux/extras/$releasever/$b
 --setting to powersave--
 >sudo modprobe cpufreq_powersave
 >sudo sh -c "echo powersave > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
-sudo sh -c "echo powersave > /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor"
-sudo sh -c "echo powersave > /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor"
-sudo sh -c "echo powersave > /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor"
 --changing back to default settings--
 >sudo modprobe cpufreq_ondemand
 >sudo sh -c "echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
+
+--NERDTree--
+>sudo yum install vim-enhanced
+>mkdir ~/.vim/bundle
+>mkdir ~/.vim/autoload
+>vim ~/.vimrc
+--paste in text--
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+-----------------
+>cd ~/.vim/autoload
+>git clone https://github.com/tpope/vim-pathogen.git
+--mv file from vim-pathogen folder to autoload folder--
+>cd ~/.vim/bundle
+>git clone https://github.com/scrooloose/nerdtree.git
+>vim
+:NERDTree <CR>
 
 

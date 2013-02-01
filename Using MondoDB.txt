@@ -31,12 +31,13 @@ BSONspec.org
 >for (i=0;i<1000;i++) {names=["exam","essay","quiz"]; for (j=0;j<3;j++) {db.scores.insert({"student" : i, "type" : names[j], score : Math.round(Math.random()*100)});}}
 >db.scores.find({ student: 19, type: "essay" }, { score: true })
 >db.scores.find({ type: "essay", score: 50 }, { student: true, _id: false })
->
+>db.people.find({ profession : { $exist : true } }); --returns docs with field profession
+>db.people.find({ name : { $type : 2 } }); --type 2 is for String
 
 --database query operators--
 >db.scores.find({ score: { $gt : 95, $lt : 98 } })  -- 95 > score < 98 
 >db.scores.find({ score: { $lte : 55 } })  --scores less than or equal to 55
->
+>db.people.find({ name: { $lt : "D" , $gt : "B" } });
 
 
 
