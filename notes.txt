@@ -89,3 +89,8 @@ bash custom settings::
 
 /etc/xdg/lxsession/LXDE/autostart
 
+--Spliting and Restoring a large file--
+>split -b 1024m large_file newname
+>cat newname* > large_file
+
+

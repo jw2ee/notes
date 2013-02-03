@@ -44,3 +44,4 @@ sudo gedit /etc/hostname
 sudo gedit /etc/hosts
 sudo gedit /etc/samba/smb.conf
 
+

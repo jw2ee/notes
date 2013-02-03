@@ -22,6 +22,8 @@ BSONspec.org
 --Mongo Shell Commands--a JavaScript Interpreter
 >help
 >help keys
+>use blog
+>db.users.count()
 >db  --returns current database/collection name
 >db.people.insert( obj )  --method on collection inside database
 >db.people.find()  --query and return all document in collection 
@@ -33,11 +35,52 @@ BSONspec.org
 >db.scores.find({ type: "essay", score: 50 }, { student: true, _id: false })
 >db.people.find({ profession : { $exist : true } }); --returns docs with field profession
 >db.people.find({ name : { $type : 2 } }); --type 2 is for String
+>db.people.update({ name : "Alice" }, { $set : { age : 30 } });
+>db.people.update({ name : "Jones" }, { $unset : { profession : 1 } });
+>db.people.update({ name : "George" }, { $set : { age : 30 } }, { upsert : true });
+>db.people.update( {} , { $set : { title : "Dr" } }, { multi : true } );
+>db.people.remove();  ##one item deleted at a time, meta data remains
+>db.people.drop();  ##deletes the whole database in one process
+>db.runCommand( { getLastError : 1 } )
 
 --database query operators--
 >db.scores.find({ score: { $gt : 95, $lt : 98 } })  -- 95 > score < 98 
 >db.scores.find({ score: { $lte : 55 } })  --scores less than or equal to 55
 >db.people.find({ name: { $lt : "D" , $gt : "B" } });
+>db.grades.find().sort({'score':-1}).skip(100).limit(1)  ##find 101th top score
+>db.grades.aggregate({'$group':{'_id':'$student_id', 'average':{$avg:'$score'}}},{'$sort':{'average':-1}}, {'$limit':1})
+>db.grades.find({},{'student_id':1,'type':1, 'score':1, '_id':0}).sort({'student_id':1, 'score':1}).limit(5)
+>
+
+--using Pymongo in python--
+connection = pymongo.Connection("mongodb://localhost", safe=True)
+db=connection.school
+scores=db.scores
+query = {'type':'exam'}
+selector = {'student_id':1, '_id':0}
+doc = scores.find_one( { 'student_id' : 10 } ) ##find one document
+iter = scores.find(query, selector)  ##find multi documents
+for doc in iter:
+	print doc
+query = {'type':'exam', 'score':{'$gt':50, '$lt':70}}
+iter = scores.find(query)
+cursor = cursor.sort('student_id', pymongo.ASCENDING).skip(4).limit(1)
+cursor = cursor.sort([('student_id', pymongo.ASCENDING), ('score', pymongo.DESCENDING)])
+student1 = {'student_id':77, 'score':82}
+scores.insert(student1)
+scores.update({},{'$unset':{'review_date':1}},multi=True)  ##remove all review_date's
+doc['review_date']=datetime.datetime.utcnow()  ##add new data to individual score
+scores.save(doc)
+scores.update( { 'student_id' : 10 }, doc )
+scores.update({'student_id':10}, {'$set':{'review_date':datetime.datetime.utcnow()}})
+things.remove({})
+things.drop()
+things.update({'thing':'apple'},{'$set':{'color':'red'}}, upsert=True)
+counter = counter.find_and_modify(query={'type':name},
+                                  update{'$inc':{'value':1}},
+                                  upsert=True, new=True)
+counter_value= counter['value']
+
 
 
 
