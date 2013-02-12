@@ -23,6 +23,7 @@ BSONspec.org
 >help
 >help keys
 >use blog
+>show collections
 >db.users.count()
 >db  --returns current database/collection name
 >db.people.insert( obj )  --method on collection inside database
@@ -42,6 +43,12 @@ BSONspec.org
 >db.people.remove();  ##one item deleted at a time, meta data remains
 >db.people.drop();  ##deletes the whole database in one process
 >db.runCommand( { getLastError : 1 } )
+>db.students.ensureIndex({'student_id':1},{unique:true})
+>db.students.ensureIndex({'student_id':1},{unique:true,dropDups:true})
+>db.students.ensureIndex({'address.phone':1})
+>db.system.indexes.find()
+>db.students.getIndexes()
+>db.students.dropIndex({'student_id':1})
 
 --database query operators--
 >db.scores.find({ score: { $gt : 95, $lt : 98 } })  -- 95 > score < 98 
@@ -50,7 +57,9 @@ BSONspec.org
 >db.grades.find().sort({'score':-1}).skip(100).limit(1)  ##find 101th top score
 >db.grades.aggregate({'$group':{'_id':'$student_id', 'average':{$avg:'$score'}}},{'$sort':{'average':-1}}, {'$limit':1})
 >db.grades.find({},{'student_id':1,'type':1, 'score':1, '_id':0}).sort({'student_id':1, 'score':1}).limit(5)
->
+>db.students.ensureIndex({'teachers':1})
+>db.students.find({'teacher':{'$all':[1,3]}})
+>db.students.find({'teacher':{'$all':[1,3]}}).explain()
 
 --using Pymongo in python--
 connection = pymongo.Connection("mongodb://localhost", safe=True)
@@ -64,6 +73,7 @@ for doc in iter:
 	print doc
 query = {'type':'exam', 'score':{'$gt':50, '$lt':70}}
 iter = scores.find(query)
+cursor = posts.find({}).sort('date', pymongo.DESCENDING).limit(10)
 cursor = cursor.sort('student_id', pymongo.ASCENDING).skip(4).limit(1)
 cursor = cursor.sort([('student_id', pymongo.ASCENDING), ('score', pymongo.DESCENDING)])
 student1 = {'student_id':77, 'score':82}

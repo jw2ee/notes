@@ -28,6 +28,8 @@ Fedora LXDE 18 Install on HP Laptop::
 --add users to vboxusers group--replace "user_name" with name(s)
 >usermod -a -G vboxusers user_name
 >virtualbox &
+--compile after linux kernel update--
+>sudo /etc/init.d/vboxdrv setup
 
 --nodejs install--
 https://github.com/creationix/nvm
@@ -179,5 +181,15 @@ filetype plugin indent on
 >git clone https://github.com/scrooloose/nerdtree.git
 >vim
 :NERDTree <CR>
+
+--Video Editting Tools-
+--mkvtolnix
+>sudo rpm -Uhv http://www.bunkus.org/videotools/mkvtoolnix/fedora/bunkus-org-repo-1-2.noarch.rpm
+>sudo yum install mkvtoolnix 
+--Avidemux
+>sudo yum install avidemux
+--DVD movies--
+>sudo yum install dvdstyler
+>sudoyum install devede
 
 

@@ -1,16 +1,35 @@
 --using Avidemux--
 --for 1280x720 GoPro (setting 720p Wide 16:9)
-Video Output: Mpeg4 (x264)
+Video Output: Mpeg4 AVC (x264)
 	Configure::
-		Rate Control: Avg Bitrate (two pass): Target 1800  --5.6:1 comp
+		Rate Control: Constant Bitrate (Single Pass) 5000
 		Output 1: Aspect Ratio: 1:1
 	Filter::
-		crop: Left:160 Right:160  --this makes a 4:3 960x720 video
-		resize: resize values must be multiplies of 8
-		Asharp: normal
+		#crop: Left:160 Right:160  --this makes a 4:3 960x720 video
+		#swsResize: 50%
+		Rotate by 180
+		*don't* Change FPS 59.94 to 29.97
 
-Audio Output: Copy
+Audio Output: Copy (AAC)
 
-Output Muxer: Mkv Muxer
+Output Muxer: MP4 Muxer
+
+
+File|Append to merge files together.
+Avg Rate : 10K (if flipping frame needed)
+(use Handbrake to change Frame Rate)
+(leave audio as copy)
+
+Most compatable:
+Mpeg4 AVC (x264) 10K bit rate
+AAC (copy)
+MP4 Muxer
+
+Finish in Handbreak (in windows VM):
+Mpeg4 AVC x264
+AAC 320kbps
+Frame Rate 30
+Data Rate 5000
+
 
 
