@@ -1,0 +1,35 @@
+Ubuntu Install::
+sudo apt-get update
+sudo apt-get install python-software-properties python g++ make software-properties-common
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:chris-lea/node.js
+sudo apt-get update
+sudo apt-get install nodejs
+
+
+
+http://stackoverflow.com/questions/10478768/installing-node-js-on-debian-6-0
+I used the following steps from Install Node.js on Debian Squeeze and it installed with no problems:
+
+    sudo apt-get update && sudo apt-get install git-core curl build-essential openssl libssl-dev
+    git clone https://github.com/joyent/node.git
+    cd node
+    git checkout v0.9.5 (or the version you want to build)
+    ./configure --openssl-libpath=/usr/lib/ssl
+    make
+    sudo make install
+    node -v
+    npm -v
+
+
+Install Meteor:
+
+$ curl https://install.meteor.com | /bin/sh
+$ meteor create myapp
+
+Run it locally:
+$ cd myapp
+$ meteor
+
+Unleash it on the world (on a free server we provide):
+$ meteor deploy myapp.meteor.com

@@ -1,0 +1,14 @@
+# 1) Install Heroku and Git (onto Ubuntu)
+$ sudo apt-get install -y git-core
+$ wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+$ which git
+$ which heroku keys:add
+# 2) Login and setup yout SSH keys
+$ heroku login
+$ ssh-keygen -t rsa   #no passphase
+$ heroku keys:add
+# 3) Clone a sample repo and push to heroku
+$ git clone https://github.com/heroku/node-js-sample.git
+$ cd node-js-sample
+$ heroku create
+$ git push heroku master

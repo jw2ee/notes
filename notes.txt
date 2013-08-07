@@ -1,3 +1,5 @@
+My local IP address: >ifconfig
+
 hot keys::
 super-r : open run dialog
 super-e : open file manager
