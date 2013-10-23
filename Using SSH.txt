@@ -1,3 +1,24 @@
+--saving ssh setup in a config file--
+>mkdir -p ~/.ssh
+>cp ~/download/skey.pem ~/.ssh
+>chmod 400 ~/.ssh/skey.pem
+>chmod 700 ~/.ssh
+>nano ~/.ssh/config #edit as follows
+Host awshost1
+HostName ec2-54-218-35-71.aws.amazon.com
+User ubuntu
+IdentityFile "~/.ssh/skey.pem"
+>ssh awshost1
+>ssh awshost1 uptime
+
+--sending and receiving files via ssh--
+##copy hello.txt from local dir to server home dir
+>scp -i skey.pem ./hello.txt ubuntu@ec2-XX-amazonaws.com:~/
+>scp ./hello.txt awshost1:~/
+##copy hello.txt from server home dir to local dir
+>scp -i skey.pem ubuntu@ec2-XX-amazonaws.com:~/hello.txt .
+>scp awshost1:~/hello.txt .
+
 --modifying SSH configuration--first backup original
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
 sudo chmod a-w /etc/ssh/sshd_config.factory-defaults

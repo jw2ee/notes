@@ -1,4 +1,5 @@
-My local IP address: >ifconfig
+>ifconfig #local IP address
+>echo $PATH #user execute path
 
 hot keys::
 super-r : open run dialog

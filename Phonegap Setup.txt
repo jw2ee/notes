@@ -1,0 +1,12 @@
+See: http://docs.phonegap.com/en/2.3.0/guide_getting-started_android_index.md.html#Getting%20Started%20with%20Android
+
+New Install in NodeJS::
+>npm install -g phonegap
+
+Using to create a new app::
+>phonegap create new-app-name
+>cd new-app-name
+>phonegap run android
+
+>phonegap local install android
+>phonegap local build android

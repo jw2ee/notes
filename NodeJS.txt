@@ -33,3 +33,5 @@ $ meteor
 
 Unleash it on the world (on a free server we provide):
 $ meteor deploy myapp.meteor.com
+
+$npm install -g karma
