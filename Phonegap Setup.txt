@@ -1,4 +1,5 @@
 See: http://docs.phonegap.com/en/2.3.0/guide_getting-started_android_index.md.html#Getting%20Started%20with%20Android
+http://developer.android.com/tools/extras/oem-usb.html
 
 New Install in NodeJS::
 >npm install -g phonegap
@@ -10,3 +11,41 @@ Using to create a new app::
 
 >phonegap local install android
 >phonegap local build android
+
+Using Cordova::
+>npm install -g cordova
+>cordova create hello com.example.hello HelloWorld
+--specify a target platform
+>cordova platform add wp7
+>cordova platform add wp8
+>cordova platform add windows8
+>cordova platform add android
+>cordova platform add blackberry10
+>cordova platform add firefoxos
+--check current set platform
+>cordova platforms ls
+--remove a platform
+>cordova platform remove blackberry10
+--build the project
+>cordova build
+>cordova build android
+--run on emulator
+>cordova emulate android
+--run on device
+>cordova run android
+--list current plug-ins
+>cordova plugin ls
+--add/remove a plug-in
+>cordova plugin add org.apache.cordova.geolocation
+>cordova plugin remove org.apache.cordova.geolocation
+
+Using Yeoman::
+>npm install -g yo
+>npm install -g generator-webapp
+>npm install -g generator-angular
+>yo angular
+>yo angular:controller myController
+>yo angular:directive myDirective
+>yo angular:filter myFilter
+>yo angular:service myService
+

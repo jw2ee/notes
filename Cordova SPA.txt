@@ -1,0 +1,18 @@
+Using Cordova with an Angular SPA App::
+>npm install -g cordova
+>cordova create helloworld com.example.hello HelloWorld
+>cordova platform add android
+>cordova build android
+>cordova emulate android
+>cordova run android
+
+-edit to match SPA--
+./helloworld/www/index.html
+
+Open Android Project in Eclipse::
+File|New|Project
+Wizard|Android|Android Project from Existing Code
+Browse|helloworld\platforms\android
+Click-Finish
+
+Right-Click Project|Run As|Android Application
